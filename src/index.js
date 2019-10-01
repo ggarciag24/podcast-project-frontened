@@ -89,8 +89,12 @@ function renderNote(note){
   let ul = document.querySelector(".note-list")
   let li = document.createElement("li")
   li.className = "note"
+
+
+  li.id = note.id
   let div = document.createElement("div")
   div.className = "note-info"
+
 
   let episodep = document.createElement("p")
   episodep.className = "note-episode"
@@ -106,16 +110,30 @@ function renderNote(note){
   explanationp.className = "note-explanation"
   explanationp.innerText = note.explanation
   div.appendChild(explanationp)
+
+  let deleteBtn = document.createElement("button")
+  deleteBtn.innerText = "Delete"
+  deleteBtn.addEventListener("click", handleDelete)
+  div.appendChild(deleteBtn)
   li.appendChild(div)
 
   ul.appendChild(li)
-
 }
 
-// function initializeForm(){
-//   let form = document.querySelector(".note-form")
-//   form.addEventListener("submit", handleSubmit)
-// }
+function handleDelete(e){
+  let noteLi = e.target.parentElement.parentElement
+  let noteId = noteLi.id
+
+  fetch(`http://localhost:3000/personal_notes/${noteId}`, {
+    method: "DELETE"
+  })
+  .then(res => res.json())
+  .then(data => {
+      noteLi.remove()
+  })
+}
+
+
 
 function handleSubmit(e){
   e.preventDefault()
