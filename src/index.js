@@ -128,6 +128,9 @@ function renderNote(note){
 
   let deleteBtn = document.createElement("button")
   deleteBtn.innerText = "Delete"
+  // let i = document.createElement("i")
+  // i.className = "trash alternate outline icon"
+  // deleteBtn.appendChild(i)
   deleteBtn.addEventListener("click", handleDelete)
   div.appendChild(deleteBtn)
   li.appendChild(div)
@@ -178,6 +181,7 @@ function handleEdit(e){
 
   let editBtn = document.createElement("button")
   editBtn.innerText = "Edit"
+  editBtn.className = "ui orange basic button"
   let editForm = document.querySelector(".edit-form")
   editForm.dataset.id = podcast_id.slice(10)
   editDiv.append( episodeDiv, ratingDiv, explanationDiv, editBtn)
@@ -222,6 +226,7 @@ function handleNewPodcast(e){
 
   let createBtn = document.createElement("button")
   createBtn.innerText = "Create Podcast"
+  createBtn.className = "ui orange basic button"
   newForm.appendChild(createBtn)
 
   let formDiv = document.querySelector(".new-podcast-form-location")
@@ -381,6 +386,7 @@ function handleAddBtnAction(e){
 
   let subNoteBtn = document.createElement("button")
   subNoteBtn.innerText = "Submit"
+  subNoteBtn.className = "ui orange basic button"
   form.appendChild(subNoteBtn)
 
   let formDiv = document.querySelector(".new-note-form-location")
