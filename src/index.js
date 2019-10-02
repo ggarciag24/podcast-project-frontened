@@ -186,6 +186,7 @@ function initializeNewPodcast(){
 
 function handleNewPodcast(e){
   let newForm = document.createElement("form")
+  newForm.className = "new-form"
   let namep = document.createElement("p")
   namep.innerText = "Name:"
   let nameInput = document.createElement("input")
@@ -225,8 +226,6 @@ function displayNewPodcast(e){
     topic_id: document.querySelector(".topic-name").id
   }
 
-  // debugger
-///////////////////////////////////////////////////////////////////////////////////////////////////
   fetch("http://localhost:3000/podcasts", {
     method: "POST",
     headers: {
@@ -239,6 +238,7 @@ function displayNewPodcast(e){
   .then(data => {
     renderPodcast(data)
   })
+  document.querySelector(".new-form").remove()
 }
 
 function handleDelPodBtnAction(e){
@@ -284,6 +284,7 @@ function displayEdit(e, noteLi){
     noteLi.querySelector(".note-rating").innerText = data.rating
     noteLi.querySelector(".note-explanation").innerText = data.explanation
   })
+  document.querySelector(".edit-div").remove()
 }
 
 
@@ -306,8 +307,7 @@ function handleSubmit(e){
   let formEpisode = e.target.querySelector(".note-episode").value
   let formRating = e.target.querySelector(".note-rating").value
   let formExplanation = e.target.querySelector(".note-explanation").value
-  let ul = document.querySelector(".note-list")
-
+// debugger
   let formInfo = {
     personal_note : {
       episode: formEpisode,
@@ -316,7 +316,7 @@ function handleSubmit(e){
       podcast_id: e.target.dataset.podcastId
     }
   }
-debugger
+// debugger
   fetch("http://localhost:3000/personal_notes", {
     method: "POST",
     headers: {
@@ -329,12 +329,50 @@ debugger
   .then(data => {
       renderNote(data)
   })
+  wholeForm.remove()
 }
 
 function handleAddBtnAction(e){
-  let form = document.querySelector(".note-form")
-  form.style.backgroundColor = "yellow"
-  form.dataset.podcastId = e.target.id
-debugger
+
+  let form = document.createElement("form")
+  form.className = "note-form"
+  form.method = "POST"
+  form.dataset.podcastId = e.target.parentElement.parentElement.id
+
+  let h4 = document.createElement("h4")
+  h4.innerText = "Create A Note:"
+  form.appendChild(h4)
+
+  let noteEpisodeP = document.createElement("p")
+  noteEpisodeP.innerText = "Episode: "
+  let noteEpisodeIn = document.createElement("input")
+  noteEpisodeIn.type = "text"
+  noteEpisodeIn.className = "note-episode"
+  noteEpisodeP.appendChild(noteEpisodeIn)
+  form.appendChild(noteEpisodeP)
+
+  let noteRatingP = document.createElement("p")
+  noteRatingP.innerText = "Rating: "
+  let noteRatingIn = document.createElement("input")
+  noteRatingIn.type = "text"
+  noteRatingIn.className = "note-rating"
+  noteRatingP.appendChild(noteRatingIn)
+  form.appendChild(noteRatingP)
+
+  let noteExplanationP = document.createElement("p")
+  noteExplanationP.innerText = "Explanation: "
+  let noteExplanationIn = document.createElement("input")
+  noteExplanationIn.type = "text"
+  noteExplanationIn.className = "note-explanation"
+  noteExplanationP.appendChild(noteExplanationIn)
+  form.appendChild(noteExplanationP)
+
+  let subNoteBtn = document.createElement("button")
+  subNoteBtn.innerText = "Submit"
+  form.appendChild(subNoteBtn)
+
+  let formDiv = document.querySelector(".new-note-form-location")
+  formDiv.appendChild(form)
+
   form.addEventListener("submit", handleSubmit)
 }

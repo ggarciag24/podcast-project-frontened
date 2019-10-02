@@ -17,4 +17,9 @@
 
 .title {
   text-align: center;
+  font-family: courier;
+}
+
+.topic-name {
+  font-family: courier;
 }
