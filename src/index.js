@@ -50,6 +50,7 @@ function renderPodcast(p){
 
     let podcastDescriptionTitle = document.createElement("h4")
     podcastDescriptionTitle.innerText = "Description:"
+    podcastDescriptionTitle.className = "des"
     podcastdiv.appendChild(podcastDescriptionTitle)
 
     let podcastDescription = document.createElement("p")
@@ -75,6 +76,7 @@ function renderPodcast(p){
     noteDiv.className = "notes-location"
     let noteHeader = document.createElement("h4")
     noteHeader.innerText = " Notes:"
+    noteHeader.className = "note-header-constant"
     let noteul = document.createElement("ul")
     noteul.className = "note-list"
     noteul.id = `note-list-${p.id}`
@@ -142,13 +144,18 @@ function handleEdit(e){
   let editDiv = document.createElement("div")
   editDiv.className = "edit-div"
   editDiv.id = noteId
+
+  let h4 = document.createElement("h4")
+  h4.innerText = "Edit Note:"
+  editDiv.appendChild(h4)
+  //////////////////////////////////////////////////////////////
   let episodeDiv = document.createElement("div")
   let episodeparagraph = document.createElement("p")
   episodeparagraph.innerText = "Episode:"
   episodeDiv.appendChild(episodeparagraph)
   let episodeTextfield = document.createElement("input")
   episodeTextfield.className = "edit-episode-input"
-  episodeTextfield.innerText = e.target.parentElement.querySelector(".note-episode").innerText
+  episodeTextfield.value = e.target.parentElement.querySelector(".note-episode").innerText
   episodeDiv.appendChild(episodeTextfield)
 
   let ratingDiv = document.createElement("div")
@@ -157,7 +164,7 @@ function handleEdit(e){
   ratingDiv.appendChild(ratingparagraph)
   let ratingTextfield = document.createElement("input")
   ratingTextfield.className = "edit-rating-input"
-  ratingTextfield.innerText = e.target.parentElement.querySelector(".note-rating").innerText
+  ratingTextfield.value = e.target.parentElement.querySelector(".note-rating").innerText
   ratingDiv.appendChild(ratingTextfield)
 
   let explanationDiv = document.createElement("div")
@@ -166,7 +173,7 @@ function handleEdit(e){
   explanationDiv.appendChild(explanationparagraph)
   let explanationTextfield = document.createElement("input")
   explanationTextfield.className = "edit-explanation-input"
-  explanationTextfield.innerText = e.target.parentElement.querySelector(".note-explanation").innerText
+  explanationTextfield.value = e.target.parentElement.querySelector(".note-explanation").innerText
   explanationDiv.appendChild(explanationTextfield)
 
   let editBtn = document.createElement("button")
@@ -187,6 +194,11 @@ function initializeNewPodcast(){
 function handleNewPodcast(e){
   let newForm = document.createElement("form")
   newForm.className = "new-form"
+
+  let h4 = document.createElement("h4")
+  h4.innerText = "Create A Podcast:"
+  newForm.appendChild(h4)
+
   let namep = document.createElement("p")
   namep.innerText = "Name:"
   let nameInput = document.createElement("input")

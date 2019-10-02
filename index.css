@@ -3,10 +3,10 @@
   border: grey solid 1px;
   padding: 1rem;
   width: 15rem;
-  height: 25rem;
+  height: 26rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px #e04b52
+  box-shadow: 3px 4px #FF8C00
 }
 
 .podcast-pic {
@@ -18,8 +18,54 @@
 .title {
   text-align: center;
   font-family: courier;
+  border-bottom: grey solid 1px;
 }
 
 .topic-name {
   font-family: courier;
+  text-align: center;
+  border-top: grey solid 1px;
+  border-bottom: grey solid 1px;
+}
+
+.new-podcast {
+  margin: 0 auto;
+  width: 144px;
+}
+
+body {
+  text-align: center;
+}
+
+.note-form, .new-form, .edit-div {
+  text-align: center;
+  border: grey solid 1px;
+  padding: 1rem;
+  width: 15rem;
+  height: 19rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px	#FF8C00;
+}
+
+.podcast-name {
+  font-family: courier;
+}
+
+.podcast-pic {
+  box-shadow: 3px 4px	#A9A9A9;
+}
+
+.pod-name, .des {
+  font-family: courier;
+}
+
+.note-header-constant {
+    font-family: courier;
+    border: grey solid 1px;
+    background-color: #FFFFFF;
+    box-shadow: 3px 4px	#FF8C00;
+}
+.note-info {
+  border-bottom: grey solid 1px;
 }
