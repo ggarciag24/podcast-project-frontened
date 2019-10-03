@@ -123,6 +123,9 @@ function renderNote(note){
 
   let editBtn = document.createElement("button")
   editBtn.innerText = "Edit"
+  // let i = document.createElement("i")
+  // i.className = "pencil alternate icon"
+  // editBtn.appendChild(i)
   editBtn.addEventListener("click", handleEdit)
   div.appendChild(editBtn)
 
